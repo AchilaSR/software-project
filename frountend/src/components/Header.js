@@ -25,7 +25,7 @@ function Header() {
                         pointerEvents="none"
                         children={<SearchIcon color="#718096" />}
                     />
-                    <Input type="text" color="#718096" placeholder="Enter your Teacher" variant="unstyled"  margin="1.5" value={searchbody} />
+                    <Input type="text" color="#718096" placeholder="Enter your Teacher" variant="unstyled"  margin="1.5"  />
                 </InputGroup>
                 </Tooltip>
             </Box>

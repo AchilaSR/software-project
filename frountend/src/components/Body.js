@@ -1,4 +1,4 @@
-import { Stack,Grid, GridItem,Spacer,Text,Box} from '@chakra-ui/react'
+import { Stack,Grid, GridItem,Spacer,Text} from '@chakra-ui/react'
 import React from 'react'
 
 function Body() {
