@@ -1,6 +1,5 @@
 import {BrowserRouter as Router, Route,Switch} from "react-router-dom";
-import Header from "./components/Header";
-import Body from "./components/Body";
+import Firstpage from "./pages/Firstpage";
 
 
 
@@ -10,7 +9,7 @@ function Landingpage() {
   return (
     <Router>
      <Switch>
-        <Route exact path="/" component={Body}/>
+        <Route exact path="/" component={Firstpage}/>
        
       </Switch>
       
