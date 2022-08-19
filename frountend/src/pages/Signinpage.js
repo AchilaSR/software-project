@@ -1,11 +1,20 @@
-import {Stack,Button,Box,Grid, GridItem,Image, Flex} from '@chakra-ui/react'
+import {Stack,Button,Box,Grid, GridItem,Image} from '@chakra-ui/react'
 import React from 'react'
 import Signin from '../components/Signin'
+import { useHistory} from "react-router-dom"
 
 
 
 function Signinpage() {
     
+    let history = useHistory();
+
+    const back = (event) => {
+        event.preventDefault();
+
+        history.push('/');
+        
+    }; 
 
     return (
         <Stack>
@@ -16,7 +25,7 @@ function Signinpage() {
                             <Stack backgroundColor="whiteAlpha.700" h="200px" w="460px" mt="75px" ml="100px" >
                            <Image src="./images/logo.png" w="400px" h="130px"  m="30px"/>
                             </Stack>
-                            <Button h="40px" size="sm" colorScheme="blue" fontSize="20px"  m="30px" mt="300px"> 
+                            <Button h="40px" size="sm" colorScheme="blue" fontSize="20px" onClick={back} m="30px" mt="300px"> 
                                 Back to main page
                             </Button>
                         </GridItem> 
