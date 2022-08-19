@@ -1,12 +1,18 @@
-import {Stack,Button,Box,Text,Grid, GridItem,Image} from '@chakra-ui/react'
+import {Stack,Button,Box,Grid, GridItem,Image} from '@chakra-ui/react'
 import React from 'react'
 import Register from '../components/Register'
-
+import { useHistory} from "react-router-dom"
 
 
 function Registerpage() {
 
- 
+    let history = useHistory();
+
+    const back = (event) => {
+        event.preventDefault();
+        history.push('/');
+        
+    }; 
 
     return (
         <Stack>
@@ -17,7 +23,7 @@ function Registerpage() {
                             <Stack backgroundColor="whiteAlpha.700" h="200px" w="460px" mt="75px" ml="100px" >
                            <Image src="./images/logo.png" w="400px" h="130px"  m="30px"/>
                             </Stack>
-                            <Button h="40px" size="sm" colorScheme="blue" fontSize="20px"  m="30px" mt="300px"> 
+                            <Button h="40px" size="sm" colorScheme="blue" fontSize="20px"  m="30px" mt="300px" onClick={back}> 
                                 Back to main page
                             </Button>
                         </GridItem>  
@@ -26,7 +32,6 @@ function Registerpage() {
                         </GridItem>
                 </Grid>           
             </Stack>
-            
         </Stack>
     )
 }
