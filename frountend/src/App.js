@@ -9,10 +9,11 @@ function Landingpage() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Searchsection} />
+        <Route exact path="/" component={Firstpage} />
         <Route exact path="/singinpage" component={Signinpage} />
         <Route exact path="/registerpage" component={Registerpage} />
         <Route exact path="/userpage" component={Userpage} />
+        <Route exact path="/searchsection" component={Searchsection} />
       </Switch>
     </Router>
   );

@@ -1,170 +1,44 @@
-const Users = require('../model/studentModel')
-const bcrypt = require('bcrypt')
-// const jwt = require('jsonwebtoken')
-
-
+const Users = require("../model/studentModel");
+const bcrypt = require("bcrypt");
 
 const studentControlers = {
-    register: async(req, res) =>{
-        try {
-            const {email, password} = req.body;
+  register: async (req, res) => {
+    try {
+      const { email, password } = req.body;
 
-            const user = await Users.findOne({email});
-            if(user) 
-                return res.status(400).json({msg: "Email already exists"})
+      const user = await Users.findOne({ email });
+      if (user) return res.status(400).json({ msg: "Email already exists" });
 
-            const passwordEncrypt = await bcrypt.hash(password, 10); // encrypt the password
-            
-            const newUser = new Users({
-                email, password: passwordEncrypt
-            })
+      const passwordEncrypt = await bcrypt.hash(password, 10); // encrypt the password
 
-            // res.json(newUser);
+      const newUser = new Users({
+        email,
+        password: passwordEncrypt,
+      });
 
-            await newUser.save(); // save in mongoDB
+      // res.json(newUser);
 
-        //     const accesstoken = createAccessToken({id: newUser._id})
-        //     const refreshtoken = createRefreshToken({id: newUser._id})
-
-        //     res.cookie('refreshtoken', refreshtoken, {
-        //         htttpOnly: true,
-        //         path: '/user/refresh_token'
-        //     })
-        //     res.cookie('dsadh','yagdsygd')
-
-        //     res.json({accesstoken})
-            
-            res.json({msg: "Registration successful"})
-        }   
-        catch(err){
-            return res.status(500).json({msg: err.message})
-        }
-    },
-    login: async(req, res) => {
-        try {
-            const {email, password} = req.body;
-
-            const user = await Users.findOne({email});
-            if(!user) return res.status(400).json({msg: "User doesn't exist"});
-
-            const isMatch = await bcrypt.compare(password, user.password)
-            if(!isMatch) return res.status(400).json({msg: "Incorrect Password"});
-
-            res.json({msg: "Successfully login"});
-            // const accesstoken = createAccessToken({id: user._id})
-            // const refreshtoken = createRefreshToken({id: user._id})
-
-            // res.cookie('refreshtoken', refreshtoken, {
-            //     httpOnly: true,
-            //     path: 'user/refresh_token',
-            // })
-
-            // // res.json({accesstoken});
-            // res.json({id:user._id})
-
-
-        } catch(err){
-            return res.status(500).json({msg: err.message})
-        }
+      await newUser.save();
+      res.json({ msg: "Registration successful" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
     }
-}
-     
-//     logout: async(req, res) => {
-//         try {
-//             res.clearCookie('refreshtoken', {path: 'user/refresh_token'});
-//             res.json({msg: "Successfully Logged Out"});
+  },
+  login: async (req, res) => {
+    try {
+      const { email, password } = req.body;
 
-//         } catch(err){
-//             return res.status(500).json({msg: err.message})
-//         }
-//     },
-//     refreshToken: (req, res) => {
-//         try{
-//             const ref_token = req.cookies.refreshtoken;
-//             if(!ref_token) return res.status(400).json({msg: "Please Login or Register"})
+      const user = await Users.findOne({ email });
+      if (!user) return res.status(400).json({ msg: "User doesn't exist" });
 
-//             jwt.verify(ref_token, process.env.SECRET_REFRESH_TOKEN, (err, user) => {
-//                 if(err) return res.status(400).json({msg: "Please Login or Register"})
-                
-//                 const accesstoken = createAccessToken({id: user.id});
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) return res.status(400).json({ msg: "Incorrect Password" });
 
-//                 res.json({accesstoken});
-//             })
-           
-//             res.json({ref_token});
+      res.json({ msg: "Successfully login" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+};
 
-
-//         } catch(err){
-//             return res.status(500).json({msg: err.message}) 
-//         }
-        
-//     }, 
-//     saveinfo: async (req,res) =>{
-//         try {
-//             const id = req.params.id;
-//             const user = await Users.findById(id).select('-password')
-//             if(!user) res.status(400).json({msg: "User doesn't exists"})
-//             Object.assign(user,req.body);
-//             user.save();
-//             res.send({user})
-
-            
-//         } catch (err) {
-//             return res.status(500).json({msg: err.message});
-//         }
-//     },
-//     getUser: async (req, res) => {
-//         try {
-//             const id = req.params.id;
-//             const user = await Users.findById(id).select('-password')
-//             if(!user) res.status(400).json({msg: "User doesn't exists"})
-
-//             res.json(user)
-//         } catch (err) {
-//             return res.status(500).json({msg: err.message});
-//         }
-
-//     },
-    
-
-//     changep: async(req,res) =>{
-//         try {
-//             const {id,password, newpassword} = req.body;
-//             const user = await Users.findById(id)
-
-//             const isMatch = await bcrypt.compare(password, user.password)
-//             if(!isMatch) return res.status(400).json({msg: "Incorrect Password"});
-
-//             const passwordEncrypt = await bcrypt.hash(newpassword, 10); // encrypt the password
-            
-//             Object.assign(user,{password:passwordEncrypt}); 
-//             user.save();  
-//             res.json({msg: "Successfully change password"});
-            
-//         } catch (err) {
-//             return res.status(500).json({msg: err.message});
-//         }
-//     },
-//     delectacc: async(req,res) => {
-//         try {
-//             const id = req.params.id;
-//             const user = await Users.findById(id)
-//             await user.remove();
-//             res.send({data:true});
-
-//         } catch (err) {
-//             return res.status(500).json({msg: err.message});
-//         }
-//     }
-
-// }
-
-// const createAccessToken = (user) => {
-//     return jwt.sign(user, process.env.SECRET_ACCESS_TOKEN, {expiresIn: "1d"})
-// }
-
-// const createRefreshToken = (user) => {
-//     return jwt.sign(user, process.env.SECRET_REFRESH_TOKEN, {expiresIn: "7d"})
-// }
-
-module.exports = studentControlers
+module.exports = studentControlers;
