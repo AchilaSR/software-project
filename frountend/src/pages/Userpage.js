@@ -1,7 +1,7 @@
 import { Stack } from "@chakra-ui/react";
-import Useheader from "../componants/Userheder";
-import Body from "../componants/Body";
-import Footer from "../componants/Footer";
+import Useheader from "../components/Userheder";
+import Body from "../components/Body";
+import Footer from "../components/Footer";
 
 
 function Userpage() {

@@ -50,7 +50,7 @@ const studentControlers = {
             const isMatch = await bcrypt.compare(password, user.password)
             if(!isMatch) return res.status(400).json({msg: "Incorrect Password"});
 
-            // // res.json({msg: "Successfully login"});
+            res.json({msg: "Successfully login"});
             // const accesstoken = createAccessToken({id: user._id})
             // const refreshtoken = createRefreshToken({id: user._id})
 

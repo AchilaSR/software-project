@@ -3,6 +3,7 @@ import { Flex, Stack,Button,Box,Text,Image, FormControl,
     FormLabel,InputGroup,InputRightElement,Input,useToast} from '@chakra-ui/react'
 import axios from 'axios';
 import { useHistory} from "react-router-dom"
+import {ViewIcon,ViewOffIcon} from '@chakra-ui/icons'
 
 function Signin() {
 
@@ -25,7 +26,9 @@ function Signin() {
     const handleSingIn = async (event) => {
         event.preventDefault();
         if(st==="s"){
+            console.log("we")
         try{
+            console.log("we")
             const res = await api.post("/student/login",{email:emailaddress,password:password});
             setUser(res.data);
             
@@ -146,7 +149,7 @@ function Signin() {
 
                                     <InputRightElement >
                                         <Button  h="15px" w="70px" size="sm" variant="link" onClick={() => setShowPassword(!ShowPassword)} disabled={isInvalidshow}   mr="30px"> 
-                                        {ShowPassword ? 'Hide' : 'Show'}
+                                        {ShowPassword ? <ViewOffIcon/> : <ViewIcon/>}
                                         </Button>
                                     </InputRightElement>
                                     </InputGroup>
