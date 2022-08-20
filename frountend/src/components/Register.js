@@ -3,6 +3,7 @@ import { Flex, Stack,Button,Box,Text,Image, FormControl,
     FormLabel,InputGroup,InputRightElement,Input,useToast} from '@chakra-ui/react'
 import axios from "axios";
 import { useHistory} from "react-router-dom"
+import {ViewIcon,ViewOffIcon} from '@chakra-ui/icons'
 
 
 
@@ -189,7 +190,7 @@ function Register() {
 
                                     <InputRightElement >
                                         <Button  h="15px" w="70px" size="sm" variant="link"  onClick={() => setShowPassword(!ShowPassword)} disabled={isInvalidshow}   mr="30px"> 
-                                        {ShowPassword ? 'Hide' : 'Show'}
+                                        {ShowPassword ? <ViewOffIcon/> : <ViewIcon/>}
                                         </Button>
                                     </InputRightElement>
                                     </InputGroup>
