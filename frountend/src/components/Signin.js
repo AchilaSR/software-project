@@ -25,7 +25,9 @@ function Signin() {
     const handleSingIn = async (event) => {
         event.preventDefault();
         if(st==="s"){
+            console.log("we")
         try{
+            console.log("we")
             const res = await api.post("/student/login",{email:emailaddress,password:password});
             setUser(res.data);
             

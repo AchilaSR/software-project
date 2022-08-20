@@ -45,17 +45,18 @@ const teacherControlers = {
             return res.status(500).json({msg: err.message})
         }
     },
+
+
     login: async(req, res) => {
         try {
             const {email, password} = req.body;
 
             const user = await Users.findOne({email});
             if(!user) return res.status(400).json({msg: "User doesn't exist"});
-
             const isMatch = await bcrypt.compare(password, user.password)
             if(!isMatch) return res.status(400).json({msg: "Incorrect Password"});
-
-            // // res.json({msg: "Successfully login"});
+            
+            res.json({msg: "Successfully login"});
             // const accesstoken = createAccessToken({id: user._id})
             // const refreshtoken = createRefreshToken({id: user._id})
 
