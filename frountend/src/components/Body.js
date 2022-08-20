@@ -12,9 +12,9 @@ function Body() {
                         <GridItem rowSpan={4} colSpan={2} />
                         <GridItem rowSpan={3} colSpan={5} bgColor={'white'} opacity='70%' p="10px">
                             <Text fontSize="15" color="#222AE8">E Learning | Education</Text>
-                            <Text fontSize="50" color="#222AE8">Learn online </Text>
-                            <Text fontSize="30" color="#222AE8">Stay Home</Text>
-                            <Text fontSize="15" color="#FF0101" fontWeight="bold">Most effective way to solving your problams in few minites.</Text>
+                            <Text fontSize="50" color="#222AE8">Online Learning Platform </Text>
+                            <Text fontSize="30" color="#222AE8">Learning together even when we're apart</Text>
+                            <Text fontSize="15" color="#FF0101" fontWeight="bold">Most effective way to solve your educational problems in few minutes.</Text>
                            
                         </GridItem>
                         
