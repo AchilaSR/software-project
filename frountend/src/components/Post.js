@@ -4,8 +4,8 @@ import { Avatar } from "@chakra-ui/react"
 
 export default function Post() {
    return (
-      <Stack h={"400px"} w={"400px"} >
-   <Container h={"350px"} bg={"white"}>
+      <Stack h={"500px"} w={"400px"} >
+   <Container h={"470px"} bg={"white"}>
       <VStack h="full" padding={"4"} bg={"telegram.100"}>
          <HStack h="10" w={"full"} bg="yellow.200">
          <Avatar />
@@ -15,7 +15,7 @@ export default function Post() {
          </HStack>
 
          <VStack h="full" w={"full"} bg="yellow.200">
-         <Image src="./images/bodyback.jpg" w="fit-content" h="full" /> 
+         <Image src="./images/question.png" w="full" h="full" /> 
          </VStack>
 
          <form style={{  alignItems: "center"}} >
